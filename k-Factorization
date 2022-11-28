@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+#define ll long long
+#define pb  push_back
+
+using namespace std;
+void solve()
+{ 
+int n,k;cin>>n>>k;vector<int>ans;
+for(int i=2;i*i<=n;i++)
+{
+  while(!(n%i))
+  {
+  	ans.push_back(i);
+	n/=i;	
+  }
+}
+if(n>1)ans.push_back(n);
+if(ans.size()<k)cout<<-1<<endl;
+else
+{
+	int interval=k;int p=0;bool good=1;int go=1;
+	for(auto &it:ans)
+	{
+	   if(k==1)
+	  {
+	  	good=0;
+	  	go*=it;
+	  }
+	  if(good)
+	  {
+	  	cout<<it<<" ";
+	  	  k--;
+	  }
+	}
+	cout<<go<<endl;
+}
+}
+signed main()
+{
+ 
+  cout << fixed << setprecision(25);
+  int t = 1; 
+  // cin >> t;
+  while (t--)
+  {
+    solve();
+  }
+}
